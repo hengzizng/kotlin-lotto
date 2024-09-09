@@ -8,6 +8,16 @@ private fun createLotto(numbers: List<Int>): List<LottoNumber> {
     return numbers.map(::LottoNumber)
 }
 
+private fun createLotto(vararg numbers: Int): List<LottoNumber> {
+    return numbers.map(::LottoNumber)
+}
+
+// 확장함수: 원래 있는 함수인것처럼 함수를 만듦
+private fun List<Int>.toLotto(): List<LottoNumber> {
+//    return this.map(::LottoNumber)
+    return map(::LottoNumber)
+}
+
 class LottoGameKtTest {
     @Test
     fun `1등`() {
@@ -20,10 +30,10 @@ class LottoGameKtTest {
 
     @Test
     fun `2등`() {
-        val userLotto = listOf(1, 2, 3, 4, 5, 7)
-        val winningLotto = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 7
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val userLotto = listOf(1, 2, 3, 4, 5, 7).toLotto()
+        val winningLotto = listOf(1, 2, 3, 4, 5, 6).toLotto()
+        val bonusNumber = LottoNumber(7)
+        val actual = match2(userLotto, winningLotto, bonusNumber)
         actual shouldBe 2
     }
 
