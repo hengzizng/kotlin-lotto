@@ -1,9 +1,9 @@
 package lotto
 
-class Lotto(private val numbers: List<LottoNumber>) {
+class Lotto(private val numbers: Set<LottoNumber>) {
     init {
-        require(numbers.distinct().size == 6)
+        require(numbers.size == 6)
     }
 
-    constructor(vararg numbers: Int): this(numbers.map(::LottoNumber))
+    constructor(vararg numbers: Int): this(numbers.map(::LottoNumber).toSet())
 }
