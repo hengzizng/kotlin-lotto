@@ -8,20 +8,13 @@ package lotto
  * 보너스 번호화 당첨 번호는 중복될 수 없다.
  */
 fun match(
-    userLotto: List<LottoNumber>,
-    winningLotto: List<LottoNumber>,
+    userLotto: Lotto,
+    winningLotto: Lotto,
     bonusNumber: LottoNumber
 ): Int {
-    val matchCount = match(userLotto, winningLotto)
+    val matchCount = userLotto.match(winningLotto)
     val matchBonus = userLotto.contains(bonusNumber)
     return rank(matchCount, matchBonus)
-}
-
-private fun match(
-    userLotto: List<LottoNumber>,
-    winningLotto: List<LottoNumber>
-): Int {
-    return userLotto.intersect(winningLotto.toSet()).size
 }
 
 private fun rank(matchCount: Int, matchBonus: Boolean): Int {
@@ -36,4 +29,3 @@ private fun rank(matchCount: Int, matchBonus: Boolean): Int {
     }
     return 0
 }
-

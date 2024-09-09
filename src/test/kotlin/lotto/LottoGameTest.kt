@@ -17,11 +17,11 @@ private fun List<Int>.toLotto(): List<LottoNumber> {
     return map(::LottoNumber)
 }
 
-class LottoGameKtTest {
+class LottoGameTest {
     @Test
     fun `1등`() {
-        val userLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
-        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val userLotto = Lotto(1, 2, 3, 4, 5, 6)
+        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
         val bonusNumber = LottoNumber(7)
         val actual = match(userLotto, winningLotto, bonusNumber)
         actual shouldBe 1
@@ -29,8 +29,8 @@ class LottoGameKtTest {
 
     @Test
     fun `2등`() {
-        val userLotto = listOf(1, 2, 3, 4, 5, 7).toLotto()
-        val winningLotto = listOf(1, 2, 3, 4, 5, 6).toLotto()
+        val userLotto = Lotto(1, 2, 3, 4, 5, 7)
+        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
         val bonusNumber = LottoNumber(7)
         val actual = match(userLotto, winningLotto, bonusNumber)
         actual shouldBe 2
@@ -38,8 +38,8 @@ class LottoGameKtTest {
 
     @Test
     fun `3등`() {
-        val userLotto = createLotto(listOf(1, 2, 3, 4, 5, 8))
-        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val userLotto = Lotto(1, 2, 3, 4, 5, 8)
+        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
         val bonusNumber = LottoNumber(7)
         val actual = match(userLotto, winningLotto, bonusNumber)
         actual shouldBe 3
@@ -47,8 +47,8 @@ class LottoGameKtTest {
 
     @Test
     fun `4등`() {
-        val userLotto = createLotto(listOf(1, 2, 3, 4, 9, 10))
-        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val userLotto = Lotto(1, 2, 3, 4, 9, 10)
+        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
         val bonusNumber = LottoNumber(7)
         val actual = match(userLotto, winningLotto, bonusNumber)
         actual shouldBe 4
@@ -56,11 +56,10 @@ class LottoGameKtTest {
 
     @Test
     fun `5등`() {
-        val userLotto = createLotto(listOf(1, 2, 5, 8, 9, 10))
-        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val userLotto = Lotto(1, 2, 5, 8, 9, 10)
+        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
         val bonusNumber = LottoNumber(7)
         val actual = match(userLotto, winningLotto, bonusNumber)
         actual shouldBe 5
     }
-
 }

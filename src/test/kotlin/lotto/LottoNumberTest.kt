@@ -1,7 +1,7 @@
 package lotto
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class LottoNumberTest {
@@ -19,6 +19,5 @@ class LottoNumberTest {
 
     @Test
     fun `동등성`() {
-
     }
 }
