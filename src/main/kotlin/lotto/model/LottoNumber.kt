@@ -1,5 +1,5 @@
 package lotto.model
 
 class LottoNumber(
-    private val number: Int
+    val number: Int
 ){}

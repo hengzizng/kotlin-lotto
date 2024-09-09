@@ -1,10 +1,12 @@
 package lotto.controller
 
 import lotto.model.Lotto
+import lotto.model.LottoService
 
 class LottoController {
-    private val lotto = Lotto()
+    private val lottoService = LottoService()
+
     fun getCountOfLotto(purchaseAmount : Int): Int{
-        return lotto.getCountOfLotto(purchaseAmount)
+        return lottoService.getCountOfLotto(purchaseAmount)
     }
 }
