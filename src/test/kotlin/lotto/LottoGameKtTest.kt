@@ -37,32 +37,30 @@ class LottoGameKtTest {
         actual shouldBe 2
     }
 
-
-
     @Test
     fun `3등`() {
-        val userLotto = listOf(1, 2, 3, 4, 5, 8)
-        val winningLotto = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 7
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val userLotto = createLotto(listOf(1, 2, 3, 4, 5, 8))
+        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = LottoNumber(7)
+        val actual = match2(userLotto, winningLotto, bonusNumber)
         actual shouldBe 3
     }
 
     @Test
     fun `4등`() {
-        val userLotto = listOf(1, 2, 3, 4, 9, 10)
-        val winningLotto = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 7
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val userLotto = createLotto(listOf(1, 2, 3, 4, 9, 10))
+        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = LottoNumber(7)
+        val actual = match2(userLotto, winningLotto, bonusNumber)
         actual shouldBe 4
     }
 
     @Test
     fun `5등`() {
-        val userLotto = listOf(1, 2, 5, 8, 9, 10)
-        val winningLotto = listOf(1, 2, 3, 4, 5, 6)
-        val bonusNumber = 7
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val userLotto = createLotto(listOf(1, 2, 5, 8, 9, 10))
+        val winningLotto = createLotto(listOf(1, 2, 3, 4, 5, 6))
+        val bonusNumber = LottoNumber(7)
+        val actual = match2(userLotto, winningLotto, bonusNumber)
         actual shouldBe 5
     }
 
