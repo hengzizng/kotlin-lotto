@@ -16,7 +16,7 @@ fun main() {
     println("$cnt 개를 구매했습니다")
 
     val lottoList: MutableList<Lotto> = mutableListOf()
-    for (i in 1 until cnt) {
+    for (i in 0 until cnt) {
         lottoList.add(lottoController.createLotto())
     }
 

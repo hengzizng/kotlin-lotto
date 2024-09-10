@@ -8,12 +8,7 @@ class LottoService {
     }
 
     fun createLotto(): Lotto {
-        val lotto = Lotto(mutableSetOf())
-
-        while (lotto.lottoNumbers.size < LOTTO_NUMBER_COUNT) {
-            var number = (1..45).random()
-            lotto.lottoNumbers.add(LottoNumber(number))
-        }
+        val lotto = Lotto()
         return lotto
     }
 }

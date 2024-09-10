@@ -1,5 +1,5 @@
 package lotto.model
 
-class LottoNumber(
+data class LottoNumber(
     val number: Int
 )
