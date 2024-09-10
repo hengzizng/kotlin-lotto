@@ -21,45 +21,40 @@ class LottoGameTest {
     @Test
     fun `1등`() {
         val userLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val bonusNumber = LottoNumber(7)
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val winningLotto = WinningLotto(Lotto(1, 2, 3, 4, 5, 6), LottoNumber(7))
+        val actual = match(userLotto, winningLotto)
         actual shouldBe 1
     }
 
     @Test
     fun `2등`() {
         val userLotto = Lotto(1, 2, 3, 4, 5, 7)
-        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val bonusNumber = LottoNumber(7)
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val winningLotto = WinningLotto(Lotto(1, 2, 3, 4, 5, 6), LottoNumber(7))
+        val actual = match(userLotto, winningLotto)
         actual shouldBe 2
     }
 
     @Test
     fun `3등`() {
         val userLotto = Lotto(1, 2, 3, 4, 5, 8)
-        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val bonusNumber = LottoNumber(7)
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val winningLotto = WinningLotto(Lotto(1, 2, 3, 4, 5, 6), LottoNumber(7))
+        val actual = match(userLotto, winningLotto)
         actual shouldBe 3
     }
 
     @Test
     fun `4등`() {
         val userLotto = Lotto(1, 2, 3, 4, 9, 10)
-        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val bonusNumber = LottoNumber(7)
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val winningLotto = WinningLotto(Lotto(1, 2, 3, 4, 5, 6), LottoNumber(7))
+        val actual = match(userLotto, winningLotto)
         actual shouldBe 4
     }
 
     @Test
     fun `5등`() {
         val userLotto = Lotto(1, 2, 5, 8, 9, 10)
-        val winningLotto = Lotto(1, 2, 3, 4, 5, 6)
-        val bonusNumber = LottoNumber(7)
-        val actual = match(userLotto, winningLotto, bonusNumber)
+        val winningLotto = WinningLotto(Lotto(1, 2, 3, 4, 5, 6), LottoNumber(7))
+        val actual = match(userLotto, winningLotto)
         actual shouldBe 5
     }
 }

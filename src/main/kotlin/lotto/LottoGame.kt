@@ -9,23 +9,7 @@ package lotto
  */
 fun match(
     userLotto: Lotto,
-    winningLotto: Lotto,
-    bonusNumber: LottoNumber
+    winningLotto: WinningLotto
 ): Int {
-    val matchCount = userLotto.match(winningLotto)
-    val matchBonus = userLotto.contains(bonusNumber)
-    return rank(matchCount, matchBonus)
-}
-
-private fun rank(matchCount: Int, matchBonus: Boolean): Int {
-    if (matchCount == 6) {
-        return 1
-    }
-    if (matchCount == 5 && matchBonus) {
-        return 2
-    }
-    if (matchCount > 2) {
-        return 6 - matchCount + 2
-    }
-    return 0
+    return winningLotto.rank(userLotto)
 }
