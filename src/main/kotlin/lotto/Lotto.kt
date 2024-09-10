@@ -14,4 +14,18 @@ class Lotto(val numbers: Set<LottoNumber>) : Set<LottoNumber> by numbers {
     fun match(lotto: Lotto): Int {
         return numbers.intersect(lotto.numbers.toSet()).size
     }
+
+    private fun createLotto(): List<Int> {
+        // 방법 1
+//        val lotto = mutableListOf<Int>()
+//        repeat(6) {
+//            val number = (1..45).random()
+//            lotto.add(number)
+//        }
+//        return lotto
+        // 방법 2
+//        return (1..6).map { (1..45).random() }
+        // 방법 3
+        return List(6) { (1..45).random() }
+    }
 }
