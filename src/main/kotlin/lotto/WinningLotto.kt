@@ -1,6 +1,6 @@
 package lotto
 
-class WinningLotto (
+class WinningLotto(
     val lotto: Lotto,
     val bonus: LottoNumber,
 ) {
@@ -26,5 +26,4 @@ class WinningLotto (
         }
         return 0
     }
-
 }

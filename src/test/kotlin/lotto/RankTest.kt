@@ -3,8 +3,6 @@ package lotto
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
-
 class RankTest {
 
     @Test
