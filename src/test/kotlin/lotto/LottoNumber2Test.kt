@@ -1,7 +1,6 @@
 package lotto
 
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class LottoNumber2Test {
