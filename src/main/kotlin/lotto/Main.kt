@@ -2,6 +2,7 @@ package lotto
 
 import lotto.controller.LottoController
 import lotto.model.Lotto
+import lotto.model.LottoNumber
 import lotto.view.InputView
 
 fun main() {
@@ -26,4 +27,21 @@ fun main() {
         }
         println()
     }
+
+    //val lastWeekLotto = mutableListOf<LottoNumber>()
+    println("지난주 당첨번호를 입력하세요")
+    val input = readlnOrNull()
+
+    // 입력된 문자열을 공백 기준으로 분리하여 숫자로 변환
+    if (input != null) {
+        val numbers = input.split(" ")       // 공백을 기준으로 문자열을 분리
+            .map { it.toInt() }  // 각 문자열을 Int로 변환
+    } else {
+        println("입력이 잘못되었습니다.")
+        return
+    }
+
+    println("보너스 볼 번호를 입력하세요")
+    val bonus = readlnOrNull()?.toIntOrNull() ?: 0
+
 }
