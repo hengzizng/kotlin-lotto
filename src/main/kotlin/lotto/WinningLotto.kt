@@ -14,7 +14,7 @@ class WinningLotto (
         return rank(matchCount, matchBonus)
     }
 
-    private fun rank(matchCount: Int, matchBonus: Boolean): Int {
+    fun rank(matchCount: Int, matchBonus: Boolean): Int {
         if (matchCount == 6) {
             return 1
         }
