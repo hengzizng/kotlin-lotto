@@ -28,27 +28,39 @@ class DslTest {
         actual.name shouldBe "김혜지"
     }
 
+    @Test
+    fun company() {
+        val actual = introduce {
+            name("김혜지")
+            company("현대자동차그룹")
+        }
+
+        actual.name shouldBe "김혜지"
+        actual.company shouldBe "현대자동차그룹"
+    }
+
     // this 사용의 대상: Person
     // block: 파라미터로 넘어오는 함수의 이름
-    private fun introduce(block: Person.() -> Unit): Person {
-        // 아래 1 ~ 4는 모두 동일한 값을 return
-//        // 1
-//        val person = Person("")
-//        person.block()
-//        return person
-//        // 2
-//        val person = Person("")
-//            .apply { block() }
-//        return person
-//        // 3
-//        return Person("").apply { block() }
-        // 4
-        return Person("").apply(block)
+    private fun introduce(block: PersonBuilder.() -> Unit): Person {
+        return PersonBuilder().apply(block).build()
     }
 }
 
-class Person(var name: String) {
+class PersonBuilder(
+    private var name: String = "",
+    private var company: String? = null,
+) {
     fun name(name: String) {
         this.name = name
     }
+
+    fun company(company: String) {
+        this.company = company
+    }
+
+    fun build(): Person {
+        return Person(name, company)
+    }
 }
+
+data class Person(val name: String, val company: String?)
