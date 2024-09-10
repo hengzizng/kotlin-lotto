@@ -5,4 +5,12 @@ data class Point(private val x: Int, private val y: Int) {
     operator fun plus(other: Point): Point {
         return Point(x + other.x, y + other.y)
     }
+
+    operator fun get(text: String): Int {
+        return when (text) {
+            "x" -> this.x
+            "y" -> this.y
+            else -> throw IllegalArgumentException()
+        }
+    }
 }

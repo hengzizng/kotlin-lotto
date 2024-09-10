@@ -12,4 +12,11 @@ class PointTest {
         val point4 = point1 + point2
         // Collection의 + - 도 이렇게 구현되어있음
     }
+
+    @Test
+    fun test4() {
+        val point = Point(1, 3)
+        val x = point["x"]
+        val y = point["y"]
+    }
 }
