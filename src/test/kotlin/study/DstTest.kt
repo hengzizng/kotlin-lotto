@@ -1,5 +1,6 @@
 package study;
 
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test;
 
@@ -39,8 +40,26 @@ class DslTest {
         actual.company shouldBe "현대자동차그룹"
     }
 
+    @Test
+    fun skills() {
+        val actual = introduce {
+            name("김혜지")
+            company("현대자동차그룹")
+            skills {
+                soft("A passion for problem solving")
+                soft("Good communication skills")
+                hard("Kotlin")
+            }
+        }
+
+        actual.name shouldBe "김혜지"
+        actual.company shouldBe "현대자동차그룹"
+        actual.skills?.shouldContain(SoftSkill("A passion for problem solving"))
+    }
+
     // this 사용의 대상: Person
     // block: 파라미터로 넘어오는 함수의 이름
+    // Unit: return type이 void
     private fun introduce(block: PersonBuilder.() -> Unit): Person {
         return PersonBuilder().apply(block).build()
     }
@@ -49,18 +68,47 @@ class DslTest {
 class PersonBuilder(
     private var name: String = "",
     private var company: String? = null,
+    private var skills: MutableList<Skill>? = null,
 ) {
     fun name(name: String) {
         this.name = name
     }
 
-    fun company(company: String) {
+    fun company(company: String?) {
         this.company = company
     }
 
+    fun skills(block: SkillsBuilder.() -> Unit): MutableList<Skill> {
+        return SkillsBuilder().apply(block).build()
+    }
+
     fun build(): Person {
-        return Person(name, company)
+        return Person(name, company, skills)
     }
 }
 
-data class Person(val name: String, val company: String?)
+data class Person(
+    val name: String,
+    val company: String?,
+    val skills: MutableList<Skill>?,
+)
+
+class SkillsBuilder(
+    private var skills: MutableList<Skill> = mutableListOf(),
+) {
+    fun soft(title: String) {
+        skills.add(SoftSkill(title))
+    }
+
+    fun hard(title: String) {
+        skills.add(HardSkill(title))
+    }
+
+    fun build(): MutableList<Skill> {
+        return skills
+    }
+}
+
+interface Skill
+class SoftSkill(val title: String) : Skill
+class HardSkill(val title: String) : Skill
