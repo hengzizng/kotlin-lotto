@@ -4,13 +4,11 @@ import lotto.model.Lotto
 import lotto.model.LottoService
 
 class LottoController {
-    private val lottoService = LottoService()
-
     fun getCountOfLotto(purchaseAmount: Int): Int {
-        return lottoService.getCountOfLotto(purchaseAmount)
+        return LottoService.getCountOfLotto(purchaseAmount)
     }
 
     fun createLotto(): Lotto {
-        return lottoService.createLotto()
+        return LottoService.createLotto()
     }
 }
